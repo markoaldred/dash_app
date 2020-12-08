@@ -3,13 +3,16 @@
 # Run this app with `python app.py` and
 # visit http://127.0.0.1:8050/ in your web browser.
 
+import pandas as pd
+import datetime
+import numpy as np
+import time
 import dash  # USE THIS IF RUNNING ON SERVER
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.express as px
 #from jupyter_dash import JupyterDash # USE THIS IF RUNNING ON JUPYTER
-import numpy as np
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -19,6 +22,9 @@ server = app.server
 
 #app = dash.Dash(__name__) # USE THIS IIF RUNNING ON SERVER
 #app = JupyterDash(__name__) # USE THIS IF RUNNING ON JUPYTER
+
+mt_beds = 13 #Current Number of Beds Available in Maternity
+ds_beds = 4  #Current Number of Beds Available in Delivery Suite
 
 ## Bring in Transfers data, update dates and remove uneeded columns
 df = pd.read_csv('transfers.csv')
