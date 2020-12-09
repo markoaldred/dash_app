@@ -88,7 +88,8 @@ ideal_df.drop_duplicates(keep='first', inplace = True)
 #ideal_df.loc[ideal_df.duplicated(keep=False), :]
 
 # CALCULATE LENGTH OF STAY
-ideal_df['LOS_hrs'] = (ideal_df['End'] - ideal_df['Start']).dt.seconds / (60*60)
+ideal_df['LOS'] = (ideal_df['End'] - ideal_df['Start'])
+ideal_df['LOS_hrs'] = ((ideal_df['End'] - ideal_df['Start']).dt.days * 24) + ((ideal_df['End'] - ideal_df['Start']).dt.seconds / (60*60))
 
 # EXTRACT EVENTS DATA AND PUT IN THE IDEALISED DATA TABLE
 events_df = pd.read_csv('exception_dates.csv')
